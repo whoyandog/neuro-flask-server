@@ -13,9 +13,13 @@ cd neuro-flask-server
 2. **Настройка окружения:**
 ```bash
 python -m venv venv
-# Windows:
+```
+Windows:
+```bash
 venv\Scripts\activate
-# Linux/Mac:
+```
+Linux/Mac:
+```bash
 source venv/bin/activate
 ```
 
