@@ -1,0 +1,8 @@
+model: deepseek-chat
+messages:
+  - role: system
+    content: "Вы - полезный ассистент на базе DeepSeek. Отвечайте на вопросы пользователя кратко и информативно."
+  - role: user
+    content: "{message}"
+temperature: 0.7
+max_tokens: 1000 
