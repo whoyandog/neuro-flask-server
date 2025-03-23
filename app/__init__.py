@@ -11,12 +11,10 @@ def create_app():
         app.config['JSON_AS_ASCII'] = False
         app.debug = True # Поменять на False в работе
 
-        # Настройка корневого логгера
         root_logger = logging.getLogger()
         root_logger.setLevel(logging.INFO)
         
-        # Добавляем обработчик для вывода в консоль только к корневому логгеру
-        if not root_logger.handlers:  # Предотвращаем дублирование обработчиков
+        if not root_logger.handlers:
             console_handler = logging.StreamHandler(sys.stdout)
             console_handler.setLevel(logging.INFO)
             console_handler.setFormatter(logging.Formatter(
@@ -24,20 +22,17 @@ def create_app():
             ))
             root_logger.addHandler(console_handler)
         
-        # Настраиваем логгер приложения без добавления консольного обработчика
         app.logger.setLevel(logging.INFO)
         
-        # Настраиваем логгер для сервисов без добавления консольного обработчика
         services_logger = logging.getLogger('neiro.services')
         services_logger.setLevel(logging.DEBUG)
-        services_logger.propagate = True  # Обеспечиваем передачу сообщений к корневому логгеру
+        services_logger.propagate = True
         
         if not app.debug:
             try:
                 if not os.path.exists('logs'):
                     os.mkdir('logs')
                 
-                # Файловый логгер для приложения
                 app_file_handler = RotatingFileHandler('logs/neuro_flask.log', maxBytes=10240, backupCount=20, encoding='utf-8')
                 app_file_handler.setFormatter(logging.Formatter(
                     '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
@@ -45,7 +40,6 @@ def create_app():
                 app_file_handler.setLevel(logging.INFO)
                 app.logger.addHandler(app_file_handler)
                 
-                # Отдельный файловый логгер для трассировки сообщений и кодировки
                 trace_file_handler = RotatingFileHandler('logs/message_trace.log', maxBytes=10240, backupCount=10, encoding='utf-8')
                 trace_file_handler.setFormatter(logging.Formatter(
                     '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
