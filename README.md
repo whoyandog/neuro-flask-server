@@ -29,6 +29,7 @@ pip install -r requirements.txt
 ```
 
 4. **Настройка конфигурации:**
+
 Отредактируйте .env файл, добавив свои API ключи
 ```bash
 cp .env.example .env
