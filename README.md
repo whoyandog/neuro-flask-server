@@ -29,6 +29,7 @@ pip install -r requirements.txt
 ```
 
 4. **Настройка конфигурации:**
+   
 Windows:
 ```bash
 copy .env.example .env
