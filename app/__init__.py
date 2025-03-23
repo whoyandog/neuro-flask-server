@@ -9,7 +9,7 @@ def create_app():
         app = Flask(__name__)
         
         app.config['JSON_AS_ASCII'] = False
-        app.debug = True # Поменять на False в работе
+        app.debug = False # False для логирования в файлы
 
         root_logger = logging.getLogger()
         root_logger.setLevel(logging.INFO)
