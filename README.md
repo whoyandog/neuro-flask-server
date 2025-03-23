@@ -6,7 +6,7 @@
 
 1. **Клонирование репозитория:**
 ```bash
-git clone [...](https://github.com/whoyandog/neuro-flask-server)
+git clone https://github.com/whoyandog/neuro-flask-server
 cd neuro-flask-server
 ```
 
